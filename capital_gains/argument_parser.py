@@ -33,8 +33,10 @@ def get_parser():
         help="round shares to %(metavar)s decimal places (default: %(default)s)",
         metavar="<n>",
     )
-    parser.add_argument("-t", "--totals", action="store_true", help="output totals")
-    parser.add_argument("-v", "--verbose", action="store_true", help="verbose output")
+    parser.add_argument(
+        "-t", "--totals", action="store_true", help="output totals")
+    parser.add_argument("-v", "--verbose",
+                        action="store_true", help="verbose output")
     parser.add_argument(
         "-V", "--version", action="version", version="%(prog)s " + __version__
     )

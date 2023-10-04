@@ -5,8 +5,33 @@ import csv
 import datetime as dt
 import decimal
 import logging
-
 from model import Transaction, Lot
+from const import SHARES_PER_CONTRACT
+
+OPTION_TRANSACTIONS = (
+    "buy open",
+    "option expire",
+    "option assignment",
+    "sell to close",
+)
+SHORT_OPTION_TRANSACTIONS = (
+    "sell to open",
+    "buy to close",
+)
+
+OPEN_LOT_TRANSACTIONS = (
+    "buy",
+    "buy open",
+    "sell to open",
+)
+CLOSE_LOT_TRANSACTIONS = (
+    "sell",
+    "option expire",
+    "option assignment",
+    "buy to close",
+    "sell to close",
+)
+
 
 # Reads transactions from a csv file.
 # To represent the starting portfolio, we need to add some lines with
@@ -47,38 +72,22 @@ def load_transactions(filename: str):
             else:
                 fee = decimal.Decimal(fee)
 
-            # option transaction, assume 100 shares per contract
-
             is_short_option = False
-            if order_type.lower() in [
-                "buy open",
-                "option expire",
-                "option assignment",  # ?
-                "sell to close",
-            ]:
-                price = price * 100
-            if order_type.lower() in [
-                "sell to open",
-                "buy to close",
-            ]:
-                price = price * 100
+            if order_type.lower() in OPTION_TRANSACTIONS:
+                price = price * SHARES_PER_CONTRACT
+            if order_type.lower() in SHORT_OPTION_TRANSACTIONS:
+                price = price * SHARES_PER_CONTRACT
                 is_short_option = True
 
             transaction = Transaction(
                 index, date, symbol, is_short_option, name, shares, price, fee
             )
 
-            if order_type.lower() in ["buy", "buy open", "sell to open"]:
+            if order_type.lower() in OPEN_LOT_TRANSACTIONS:
                 lot = Lot(transaction)
                 open_lots[symbol].append(lot)
                 logging.debug(f"Added lot: {lot}")
-            elif order_type.lower() in [
-                "sell",
-                "option expire",
-                "option assignment",
-                "buy to close",
-                "sell to close",
-            ]:
+            elif order_type.lower() in CLOSE_LOT_TRANSACTIONS:
                 sales[symbol].append(transaction)
                 logging.debug(f"Added sale: {transaction}")
 

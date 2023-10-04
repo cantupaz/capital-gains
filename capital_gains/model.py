@@ -60,9 +60,10 @@ class Lot(object):
     def cost_basis(self):
         """Returns the cost basis."""
         if self.purchase.is_short_option:
-            c = self.shares * self.sale.price + self.sale.fee
+            c = self.shares * self.sale.price + self.sale.fee  # adjustent??
         else:
             c = self.shares * self.purchase.price + self.purchase.fee + self.adjustment
+
         return c
 
     @property
@@ -82,8 +83,7 @@ class Lot(object):
         if self.proceeds is None:
             return None
 
-        g = self.proceeds - self.cost_basis + self.wash_sale
-        return g
+        return self.proceeds - self.cost_basis + self.wash_sale
 
     def split(self, shares):
         """Splits the Lot into two Lots."""

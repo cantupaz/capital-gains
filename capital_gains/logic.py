@@ -76,8 +76,9 @@ def washsale_adjust_lots(open_lots, remaining_shares, remaining_loss, adjustable
         if adjusting_lot.shares > remaining_shares:
             logging.debug(f"Splitting adjustable lot: {adjusting_lot}")
             open_index = open_lots.index(adjusting_lot)
-            adjusting_lot, remaining_lot = adjusting_lot.split(remaining_shares)
-            open_lots[open_index : open_index + 1] = [
+            adjusting_lot, remaining_lot = adjusting_lot.split(
+                remaining_shares)
+            open_lots[open_index: open_index + 1] = [
                 adjusting_lot,
                 remaining_lot,
             ]
@@ -107,9 +108,10 @@ def find_closing_lots(open_lots, sales, sale):
     while remaining_shares:
         if len(closable_lots) == 0:
             print("No closable lots while processing", sale)
+            return closing_lots
         else:
             closing_lot = closable_lots.pop(0)
-        logging.debug(f"Closing lot: {closing_lot}")
+            logging.debug(f"Closing lot: {closing_lot}")
 
         # Split sale if lot is too small
         if closing_lot.shares < remaining_shares:
@@ -123,9 +125,11 @@ def find_closing_lots(open_lots, sales, sale):
             logging.debug(f"Splitting closing lot: {closing_lot}")
             open_index = open_lots.index(closing_lot)
             closing_lot, remaining_lot = closing_lot.split(remaining_shares)
-            open_lots[open_index : open_index + 1] = [closing_lot, remaining_lot]
+            open_lots[open_index: open_index +
+                      1] = [closing_lot, remaining_lot]
             closable_lots.insert(0, remaining_lot)
-            logging.debug(f"Split closing lot into: {closing_lot} + {remaining_lot}")
+            logging.debug(
+                f"Split closing lot into: {closing_lot} + {remaining_lot}")
 
         closing_lot.sale = sale
         open_lots.remove(closing_lot)
