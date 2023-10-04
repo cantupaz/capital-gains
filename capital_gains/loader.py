@@ -14,7 +14,7 @@ from model import Transaction, Lot
 
 
 def load_transactions(filename: str):
-    """Returns dictionaries with open lots and sales. The dictionary key are symbols."""
+    """Returns dictionaries with open lots and sales. The dictionary keys are symbols."""
 
     open_lots = collections.defaultdict(list)
     sales = collections.defaultdict(list)
@@ -49,25 +49,35 @@ def load_transactions(filename: str):
 
             # option transaction, assume 100 shares per contract
             # or move this "logic" to model.py
+            is_option = False
+            if order_type.lower() in [
+                "buy open",
+                "option expire",
+                "option assignment",  # ?
+                "sell to close",
+            ]:
+                price = price * 100
             if order_type.lower() in [
                 "sell to open",
-                "option expire",
-                "option assignment",
                 "buy to close",
             ]:
                 price = price * 100
+                is_option = True
 
-            transaction = Transaction(index, date, symbol, name, (shares), price, fee)
+            transaction = Transaction(
+                index, date, symbol, is_option, name, shares, price, fee
+            )
 
-            if order_type.lower() in ["buy", "sell to open"]:
+            if order_type.lower() in ["buy", "buy open", "sell to open"]:
                 lot = Lot(transaction)
                 open_lots[symbol].append(lot)
                 logging.debug(f"Added lot: {lot}")
             elif order_type.lower() in [
-                "sale",
+                "sell",
                 "option expire",
                 "option assignment",
                 "buy to close",
+                "sell to close",
             ]:
                 sales[symbol].append(transaction)
                 logging.debug(f"Added sale: {transaction}")

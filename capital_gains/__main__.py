@@ -1,3 +1,5 @@
+"""Calculates capital gains from brokerage transactions."""
+
 import collections
 import logging
 
