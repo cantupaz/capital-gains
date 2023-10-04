@@ -48,8 +48,8 @@ def load_transactions(filename: str):
                 fee = decimal.Decimal(fee)
 
             # option transaction, assume 100 shares per contract
-            # or move this "logic" to model.py
-            is_option = False
+
+            is_short_option = False
             if order_type.lower() in [
                 "buy open",
                 "option expire",
@@ -62,10 +62,10 @@ def load_transactions(filename: str):
                 "buy to close",
             ]:
                 price = price * 100
-                is_option = True
+                is_short_option = True
 
             transaction = Transaction(
-                index, date, symbol, is_option, name, shares, price, fee
+                index, date, symbol, is_short_option, name, shares, price, fee
             )
 
             if order_type.lower() in ["buy", "buy open", "sell to open"]:

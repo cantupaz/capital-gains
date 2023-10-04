@@ -13,7 +13,7 @@ class Transaction(object):
     index: int
     date: datetime.datetime
     symbol: str
-    is_option: bool
+    is_short_option: bool
     name: str
     shares: decimal.Decimal
     price: decimal.Decimal
@@ -59,8 +59,8 @@ class Lot(object):
     @property
     def cost_basis(self):
         """Returns the cost basis."""
-        if self.purchase.is_option:
-            c = self.shares * self.purchase.price - self.purchase.fee + self.adjustment
+        if self.purchase.is_short_option:
+            c = self.shares * self.sale.price + self.sale.fee
         else:
             c = self.shares * self.purchase.price + self.purchase.fee + self.adjustment
         return c
@@ -70,8 +70,8 @@ class Lot(object):
         """Returns the proceeds from the sale."""
         if self.sale is None:
             return None
-        if self.purchase.is_option:
-            p = self.shares * self.sale.price + self.sale.fee
+        if self.purchase.is_short_option:
+            p = self.shares * self.purchase.price - self.purchase.fee + self.adjustment
         else:
             p = self.shares * self.sale.price - self.sale.fee
         return p
@@ -81,10 +81,8 @@ class Lot(object):
         """Returns the gain"""
         if self.proceeds is None:
             return None
-        if self.purchase.is_option:
-            g = self.cost_basis - self.proceeds + self.wash_sale
-        else:
-            g = self.proceeds - self.cost_basis + self.wash_sale
+
+        g = self.proceeds - self.cost_basis + self.wash_sale
         return g
 
     def split(self, shares):
