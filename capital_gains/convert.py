@@ -1,9 +1,9 @@
-"""Converts from raw transactions to a format like the one from the tax center"""
+"""Converts a raw transactions file to a format like the one from the ETrade tax center. """
 
 import csv
 import datetime as dt
 
-TRANS_TO_ORDERS = {
+MAP_TRANSACTION_TYPE = {
     "option expiration": "option expire",
     "option assignment": "option assignment",
     "sold to close": "sell to close",
@@ -38,13 +38,14 @@ def main():
             in_date = dt.datetime.strptime(line["TransactionDate"], "%m/%d/%y")
             out_date = in_date.strftime("%m/%d/%Y")
             new_line = (out_date,
-                        TRANS_TO_ORDERS[line["TransactionType"].lower()],
+                        MAP_TRANSACTION_TYPE[line["TransactionType"].lower()],
                         line["Symbol"], "",
                         line["Description"],
-                        line["Quantity"],
+                        abs(float(line["Quantity"])),
                         line["Price"],
                         line["Commission"],
-                        line["Amount"])
+                        abs(float(line["Amount"]))
+                        )
             new_file.append(new_line)
 
     new_file.sort()

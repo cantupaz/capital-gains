@@ -18,7 +18,8 @@ def main():
         level=logging.DEBUG if args.verbose else logging.WARNING,
     )
 
-    open_lots, sales = loader.load_transactions(args.filename)
+    open_lots, sales = loader.load_transactions(
+        args.filename, args.fiscal_year)
     closed_lots = collections.defaultdict(list)
 
     for symbol, symbol_sales in sales.items():

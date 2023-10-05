@@ -16,6 +16,16 @@ def get_parser():
     )
 
     parser.add_argument(
+        "-y",
+        "--fiscal-year",
+        dest="fiscal_year",
+        type=int,
+        default=0
+        help="fiscal year to process, if specified transactions from other years will be ignored.",
+        metavar="<n>",
+    )
+
+    parser.add_argument(
         "-d",
         "--decimal-places",
         dest="decimal_places",

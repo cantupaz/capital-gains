@@ -38,7 +38,7 @@ CLOSE_LOT_TRANSACTIONS = (
 # purchase transactions to the file. Those will get processed and added as Lots
 
 
-def load_transactions(filename: str):
+def load_transactions(filename: str, fiscal_year: int = 0):
     """Returns dictionaries with open lots and sales. The dictionary keys are symbols."""
 
     open_lots = collections.defaultdict(list)
@@ -88,7 +88,8 @@ def load_transactions(filename: str):
                 open_lots[symbol].append(lot)
                 logging.debug(f"Added lot: {lot}")
             elif order_type.lower() in CLOSE_LOT_TRANSACTIONS:
-                sales[symbol].append(transaction)
+                if (fiscal_year == 0) or (fiscal_year == date.year):
+                    sales[symbol].append(transaction)
                 logging.debug(f"Added sale: {transaction}")
 
     return open_lots, sales
