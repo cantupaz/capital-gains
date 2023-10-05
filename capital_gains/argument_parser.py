@@ -20,7 +20,7 @@ def get_parser():
         "--fiscal-year",
         dest="fiscal_year",
         type=int,
-        default=0
+        default=0,
         help="fiscal year to process, if specified transactions from other years will be ignored.",
         metavar="<n>",
     )

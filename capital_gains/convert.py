@@ -51,7 +51,7 @@ def main():
     new_file.sort()
 
     # write to the output file
-    with open(out_filename, 'w', newline='') as csvfile:
+    with open(out_filename, 'w', newline='', encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(OUT_HEADER)
         writer.writerows(new_file)

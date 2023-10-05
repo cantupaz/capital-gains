@@ -75,7 +75,7 @@ def load_transactions(filename: str, fiscal_year: int = 0):
             is_short_option = False
             if order_type.lower() in OPTION_TRANSACTIONS:
                 price = price * SHARES_PER_CONTRACT
-            if order_type.lower() in SHORT_OPTION_TRANSACTIONS:
+            elif order_type.lower() in SHORT_OPTION_TRANSACTIONS:
                 price = price * SHARES_PER_CONTRACT
                 is_short_option = True
 
