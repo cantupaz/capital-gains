@@ -37,7 +37,7 @@ CLOSE_LOT_TRANSACTIONS = (
 )
 
 
-def compare_function(item1, item2):
+def compare_function(item1: list[any], item2: list[any]):
     """Compare function to sort the input file."""
 
     # first sort by date
@@ -76,14 +76,18 @@ def load_transactions(filename: str, fiscal_year: int = 0):
         rows = []
         for (date, order_type, symbol, cusip, desc, quantity, price, fee, net) in reader:
             date = dt.datetime.strptime(date, "%m/%d/%Y").date()
-            name = None
+            name = None  # specific to Etrade
             quantity = decimal.Decimal(quantity)
 
             if price == 0:
+                # specific to ETrade, sometimes price is blank!
+                # however, maybe this is the right way to do it always because net includes
+                # the option fees that are not included in 'fee'
                 price = decimal.Decimal(net) / quantity
             else:
                 price = decimal.Decimal(price)
             if fee == "N/A":
+                # specific to ETrade
                 fee = decimal.Decimal(0)
             else:
                 fee = decimal.Decimal(fee)

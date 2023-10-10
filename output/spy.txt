@@ -1,0 +1,4 @@
+# Closed lots
+
+                  symbol | name | quantity |   acquired |       sold | proceeds | cost basis | wash sale |  gain
+SPY Mar 31 '23 $408 Call |      |        2 | 2023-03-23 | 2023-03-23 |   139.00 |      71.00 |      0.00 | 68.00

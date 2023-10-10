@@ -1,0 +1,17 @@
+Trade Date,Order Type,Security,Cusip,Transaction Description,Quantity,Executed Price,Commission,Net Amount
+10/18/2021,Sell To Open,Z OCT 29 '21 $80 PUT,,"10     Z OCT 29 '21           $80 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK SHORT",10,0.64,5,634.87
+10/21/2021,Buy To Close,Z OCT 29 '21 $80 PUT,,"10     Z OCT 29 '21           $80 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK COVER SHORT",10,0.09,0.0000,90.1
+10/22/2021,Sell To Close,Z OCT 29 '21 $75 PUT,,"10     Z OCT 29 '21           $75 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK",10,0.03,5,24.87
+11/3/2021,Sell To Open,Z NOV 19 '21 $60 PUT,,"15     Z NOV 19 '21           $60 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK SHORT",15,1.23,7.5,1837.32
+11/22/2021,Option Assignment,Z NOV 19 '21 $60 PUT,,"15     Z NOV 19 '21           $60 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK",15,0,N/A,0
+11/22/2021,Buy,Z,98954M200,"ZILLOW GROUP INC              CLASS C COM                   OPTION ASSIGNMENT             PUT  Z      11/19/21    60",1500,60,0.0000,90000
+11/23/2021,Sell To Open,Z DEC 03 '21 $58 CALL,,"15     Z DEC 03 '21           $58 CALL(Z)                   ZILLOW GROUP INC CL C CAP STK SHORT",15,0.9,7.5,1342.32
+12/2/2021,Buy To Close,Z DEC 03 '21 $58 CALL,,"15     Z DEC 03 '21           $58 CALL(Z)                   ZILLOW GROUP INC CL C CAP STK COVER SHORT",15,0.09,0.0000,135.14
+12/2/2021,Sell To Open,Z DEC 10 '21 $58 CALL,,"15     Z DEC 10 '21           $58 CALL(Z)                   ZILLOW GROUP INC CL C CAP STK SHORT",15,0.9,7.5,1342.32
+12/13/2021,Option Assignment,Z DEC 10 '21 $58 CALL,,"15     Z DEC 10 '21           $58 CALL(Z)                   ZILLOW GROUP INC CL C CAP STK",15,0,N/A,0
+12/13/2021,Sell,Z,98954M200,"ZILLOW GROUP INC              CLASS C COM                   OPTION ASSIGNMENT             CALL Z      12/10/21    58",1500,58,0.0000,86999.37
+12/14/2021,Sell To Open,Z DEC 23 '21 $50 PUT,,"15     Z DEC 23 '21           $50 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK SHORT",15,0.26,7.5,382.32
+12/20/2021,Buy To Close,Z DEC 23 '21 $50 PUT,,"15     Z DEC 23 '21           $50 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK COVER SHORT",15,0.05,0.0000,75.14
+3/3/2022,Sell To Open,Z MAR 18 '22 $45 PUT,,"15     Z MAR 18 '22           $45 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK SHORT",15,0.37,7.5,547.31
+3/16/2022,Buy To Close,Z MAR 18 '22 $45 PUT,,"1      Z MAR 18 '22           $45 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK COVER SHORT",1,0.07,0.0000,7.01
+3/17/2022,Buy To Close,Z MAR 18 '22 $45 PUT,,"14     Z MAR 18 '22           $45 PUT(Z)                    ZILLOW GROUP INC CL C CAP STK COVER SHORT",14,0.07,0.0000,98.14

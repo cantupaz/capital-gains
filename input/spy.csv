@@ -1,0 +1,3 @@
+Trade Date,Order Type,Security,Cusip,Transaction Description,Quantity,Executed Price,Commission,Net Amount
+03/23/2023,buy to close,SPY Mar 31 '23 $408 Call,,2      SPY Mar 31 '23         $408 Call(SPY)                SPDR S&P 500 ETF TRUST        COVER SHORT,2.0,0.35,1,71.02
+03/23/2023,sell to open,SPY Mar 31 '23 $408 Call,,2      SPY Mar 31 '23         $408 Call(SPY)                SPDR S&P 500 ETF TRUST        SHORT,2.0,0.7,1,138.97

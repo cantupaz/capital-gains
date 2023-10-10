@@ -1,0 +1,12 @@
+No closable lots while processing Transaction(index=2, date=datetime.date(2021, 10, 22), symbol="Z OCT 29 '21 $75 PUT", is_short_option=False, name=None, quantity=Decimal('10'), price=Decimal('3.00'), fee=Decimal('5'))
+# Closed lots
+
+               symbol | name | quantity |   acquired |       sold | proceeds | cost basis | wash sale |     gain
+ Z OCT 29 '21 $80 PUT |      |       10 | 2021-10-18 | 2021-10-21 |   635.00 |      90.00 |      0.00 |   545.00
+ Z NOV 19 '21 $60 PUT |      |       15 | 2021-11-03 | 2021-11-22 |  1837.50 |       0.00 |      0.00 |  1837.50
+Z DEC 03 '21 $58 CALL |      |       15 | 2021-11-23 | 2021-12-02 |  1342.50 |     135.00 |      0.00 |  1207.50
+Z DEC 10 '21 $58 CALL |      |       15 | 2021-12-02 | 2021-12-13 |  1342.50 |       0.00 |      0.00 |  1342.50
+                    Z |      |     1500 | 2021-11-22 | 2021-12-13 | 87000.00 |   90000.00 |      0.00 | -3000.00
+ Z DEC 23 '21 $50 PUT |      |       15 | 2021-12-14 | 2021-12-20 |   382.50 |      75.00 |      0.00 |   307.50
+ Z MAR 18 '22 $45 PUT |      |        1 | 2022-03-03 | 2022-03-16 |    36.50 |       7.00 |      0.00 |    29.50
+ Z MAR 18 '22 $45 PUT |      |       14 | 2022-03-03 | 2022-03-17 |   511.00 |      98.00 |      0.00 |   413.00
